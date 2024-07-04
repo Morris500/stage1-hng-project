@@ -20,8 +20,7 @@ async function externalIp() {
     return response.data.ip;
 }
 
-
-app.get('/api/hello',  (req, res) => {
+app.get('/',  (req, res) => {
     
   res.sendFile(__dirname + "/index.html");
 
