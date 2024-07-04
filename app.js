@@ -20,18 +20,15 @@ async function externalIp() {
     return response.data.ip;
 }
 
-app.get('/api/hello',  async (req, res) => {
+
+app.get('/api/hello',  (req, res) => {
     
-  //res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/index.html");
 
-      const person = req.query.vistorName;
-        
-    if (!visitorName) {
-        return res.status(400).json({
-            message: 'Please enter your name in the URL'
-        });
-    }
-
+    app.post("/api/hello", async function  (req, res) {
+  
+      const person = req.body.person;
+      
       try {
         let Ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
@@ -60,7 +57,8 @@ app.get('/api/hello',  async (req, res) => {
             Location: city,
             greeting,
         });
-      });
+        
+       });
       });
 
      
@@ -71,6 +69,7 @@ app.get('/api/hello',  async (req, res) => {
         });
     }
 
+});
 
 });
 
