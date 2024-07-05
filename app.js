@@ -22,7 +22,7 @@ async function externalIp() {
 
 app.get('/api/hello', async (req, res) => {
 
-    const person = req.query.vistor_Name;
+    const person = req.query.visitor_name;
     
   //res.sendFile(__dirname + "/index.html");
 // app.post("/api/hello", async function  (req, res) {
@@ -51,7 +51,7 @@ app.get('/api/hello', async (req, res) => {
 
         const greeting = `Hello, ${person}!, the temperature is ${temp}°C in ${city}`;
 
-        res.send({
+        res.json({
             client_ip: Ip,
             Location: city,
             greeting,
