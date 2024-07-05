@@ -20,13 +20,13 @@ async function externalIp() {
     return response.data.ip;
 }
 
-app.get('/',  (req, res) => {
-    
-  res.sendFile(__dirname + "/index.html");
+app.get('/api/hello', async (req, res) => {
 
-    app.post("/api/hello", async function  (req, res) {
-  
-      const person = req.body.person;
+    const person = req.query.vistor_Name;
+    
+  //res.sendFile(__dirname + "/index.html");
+// app.post("/api/hello", async function  (req, res) {
+  //   const person = req.body.person;
       
       try {
         let Ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -49,7 +49,7 @@ app.get('/',  (req, res) => {
       const weatherData = JSON.parse(data);
         const temp = weatherData.main.temp;
 
-        const greeting = `Hello ${person}!, the temperature is ${temp}°C in ${city}`;
+        const greeting = `Hello, ${person}!, the temperature is ${temp}°C in ${city}`;
 
         res.send({
             client_ip: Ip,
@@ -70,7 +70,7 @@ app.get('/',  (req, res) => {
 
 });
 
-});
+//});
 
 app.listen(port, function () { console.log("server is running on port 3000")
 
